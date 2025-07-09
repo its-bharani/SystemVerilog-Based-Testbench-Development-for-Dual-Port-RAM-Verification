@@ -1,4 +1,4 @@
-class reg_gen;
+class ram_gen;
 
 reg_trans trans_h;
 reg_trans data2send;
