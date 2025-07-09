@@ -52,5 +52,32 @@ package ram_pkg;
 `include "env.sv"
 `include "test.sv"
 endpackage
+
+
+module top();
+import ram_pkg::*;
+        reg clk;
+
+        ram_if DUV_IF(clk);
+
+        test t_h;
+  dual_port_ram DUV(.clk(clk),.in(DUV_IF.in),.wr(DUV_IF.wr),.rd(DUV_IF.rd),.wr_add(DUV_IF.wr_add),.rd_add(DUV_IF.rd_add),.out(DUV_IF.out));
+
+initial begin
+        clk=1'b0;
+        forever #10 clk=~clk;
+end
+
+initial begin
+        //if($test$plusargs("test"));
+//begin
+t_h=new(DUV_IF.DRV,DUV_IF.WR_MON,DUV_IF.RD_MON);
+t_h.build();
+t_h.run();
+#500
+$finish;
+
+end
+endmodule
       
     
