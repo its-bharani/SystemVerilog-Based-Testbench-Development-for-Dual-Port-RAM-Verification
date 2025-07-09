@@ -6,13 +6,15 @@ reg_trans data2sb=new();
 reg_trans rd_data=new();
 
   mailbox #(reg_trans) rdmon2sb;
-
+  mailbox #(reg_trans) rdmon2ref;
   function new(virtual reg_if.RD_MON rd_mon_if,
-             mailbox #(reg_trans) rdmon2sb);
+               mailbox #(reg_trans) rdmon2sb,
+               mailbox #(reg_trans) rdmon2ref);
 
 begin
         this.rd_mon_if=rd_mon_if;
         this.rdmon2sb=rdmon2sb;
+        this.rdmon2ref=rdmon2ref;
         //this.rd_data=new();
 
 end
@@ -31,7 +33,8 @@ fork
 forever begin
         drive();
         data2sb = new rd_data;
-        rdmon2sb.put(data2sb);//put data inot mailbox
+        rdmon2sb.put(data2sb);
+        rdmon2ref.put(data2sb);//put data inot mailbox
 //      $display("from read_monitor=%b",data2sb.out);
 //      data2sb.display("from read_monitor");
 //      rd_data.display("before shallow copy from read_monitor");
