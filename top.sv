@@ -29,8 +29,8 @@ endclocking
   clocking rd_mon_cb@(posedge clk);
     default input #1 output #1;
 input out;
-//input rd;
-//input wr_add;
+input rd;
+input rd_add;
 endclocking
 
   //modports
