@@ -71,7 +71,7 @@ end
 initial begin
         //if($test$plusargs("test"));
 //begin
-t_h=new(DUV_IF.DRV,DUV_IF.WR_MON,DUV_IF.RD_MON);
+  t_h=new(DUV_IF.RD_DRV,DUV_IF.WR_DRV,DUV_IF.WR_MON,DUV_IF.RD_MON);
 t_h.build();
 t_h.run();
 #500
