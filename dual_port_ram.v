@@ -1,11 +1,11 @@
 module dual_port_ram (
-    input  logic        clk,
-    input  logic        wr,              // Write enable
-    input  logic        rd,              // Read enable
-    input  logic [11:0] wr_add,          // Write address
-    input  logic [11:0] rd_add,          // Read address
-    input  logic [63:0] in,              // Write data
-    output logic [63:0] out              // Read data
+    input clk,
+    input wr,              // Write enable
+    input rd,              // Read enable
+    input [11:0] wr_add,          // Write address
+    input [11:0] rd_add,          // Read address
+    input [63:0] in,              // Write data
+    output reg [63:0] out              // Read data
 );
 
     // Declare 4096 x 64-bit memory
