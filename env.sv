@@ -36,29 +36,21 @@ virtual task build();
   wrmon_h=new(wr_mon_if,wrmon2rm);
   rddri_h=new(rd_dr_if,gen2rddr);
   rdmon_h=new(rd_mon_if,rdmon2sb);
-        model_h=new(mon2rm,ref2sb);
+  model_h=new(wrmon2rm,rdmon2ref,ref2sb);
   sb_h=new(ref2sb,rdmon2sb);
 endtask
-virtual task clear_duv();
-        @(dr_if.dr_cb);
-        dr_if.dr_cb.clear_b<=1'b0;
-        repeat(2)
-        @(dr_if.dr_cb);
-        dr_if.dr_cb.clear_b<=1'b1;
-endtask
 
-virtual task start();
+  virtual task start();
 gen_h.start;
-dri_h.start;
-rdmon_h.start;
+wrdri_h.start;
 wrmon_h.start;
+rddri_h.start;
+rdmon_h.start;
 model_h.start;
 sb_h.start;
 endtask
 
-
 virtual task run();
-//clear_duv();
 start();
 endtask
 
