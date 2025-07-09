@@ -1,4 +1,4 @@
-class ram_drv;
+class ram_rd_drv;
 
 virtual reg_if.RD_DRV rd_dr_if;//virtual interface
 
@@ -7,7 +7,7 @@ reg_trans data2duv=new();
   mailbox #(reg_trans)gen2rddr;
 //mailbox #(reg_trans)drv2mon;
 
-  function new(virtual reg_if.RD_DRV dr_if,mailbox #(reg_trans)gen2rddr);
+  function new(virtual reg_if.RD_DRV rd_dr_if,mailbox #(reg_trans)gen2rddr);
         this.rd_dr_if=rd_dr_if;
         this.gen2rddr=gen2rddr;
         //this.drv2mon=drv2mon;
