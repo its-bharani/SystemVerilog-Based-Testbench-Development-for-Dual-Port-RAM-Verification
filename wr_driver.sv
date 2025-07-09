@@ -1,4 +1,4 @@
-class wr_drv;
+class ram_wr_drv;
 
 virtual reg_if.WR_DRV wr_dr_if;//virtual interface
 
