@@ -43,9 +43,10 @@ endclocking
 package ram_pkg;
 `include "transaction.sv"
 `include "generator.sv"
-`include "driver.sv"
-`include "read_monitor.sv"
-`include "monitor.sv"
+`include "rd_driver.sv"
+`include "rd_monitor.sv"
+`include "wr_driver.sv"
+`include "wr_monitor.sv"
 `include "reference_model.sv"
 `include "scoreboard.sv"
 `include "env.sv"
