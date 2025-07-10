@@ -16,10 +16,8 @@ module dual_port_ram (
         if (wr) begin
             mem[wr_add] <= in;
         end
-    end
 
     // READ operation
-    always_ff @(posedge clk) begin
         if (rd) begin
             out <= mem[rd_add];
         end else begin
