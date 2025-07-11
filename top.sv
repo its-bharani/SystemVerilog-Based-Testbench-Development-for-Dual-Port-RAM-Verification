@@ -55,11 +55,12 @@ endpackage
 
 
 module top();
+
 import ram_pkg::*;
         reg clk;
-
+        //ram_sb_cg cg;
         ram_if DUV_IF(clk);
-
+//      ram_sb_cg=new();
         test t_h;
   dual_port_ram DUV(.clk(clk),.in(DUV_IF.in),.wr(DUV_IF.wr),.rd(DUV_IF.rd),.wr_add(DUV_IF.wr_add),.rd_add(DUV_IF.rd_add),.out(DUV_IF.out));
 
@@ -71,13 +72,24 @@ end
 initial begin
         //if($test$plusargs("test"));
 //begin
+
   t_h=new(DUV_IF.RD_DRV,DUV_IF.WR_DRV,DUV_IF.WR_MON,DUV_IF.RD_MON);
+
 t_h.build();
 t_h.run();
-#500
+#50000
+  $display("\n\n******** COVERAGE REPORT ********\n");
+ $display("Functional Coverage = %0.2f%%", $get_coverage());
+  //$coverage_save("coverage.ucdb"); // QuestaSim only
+  //$display("Coverage saved to coverage.ucdb");
+ // $finish;
+//end
+
+
 $finish;
 
 end
 endmodule
+
       
     
