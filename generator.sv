@@ -2,7 +2,7 @@ class ram_gen;
 
 reg_trans trans_h;
 reg_trans data2send;
-int no_of_trans=100;
+int no_of_trans=1000;
   mailbox #(reg_trans)gen2wrdr;
   mailbox #(reg_trans)gen2rddr;
   function new(mailbox #(reg_trans)gen2wrdr,
