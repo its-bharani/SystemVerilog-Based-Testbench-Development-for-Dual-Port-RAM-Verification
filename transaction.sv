@@ -9,8 +9,8 @@ rand logic [63:0]in;
   //constraint
   constraint in_range_c {in inside {[64'h0000_0000_0000_0000 : 64'hFFFF_FFFF_FFFF_FFFF]};}
 
-  constraint addr_valid_c {wr_add inside {[0 : 20]};}//checking operation in first 20 locations
-  constraint addr_valid_d {rd_add inside {[0 : 20]};}
+  constraint addr_valid_c {wr_add inside {[0 : 4095]};}//checking operation in first 20 locations
+  constraint addr_valid_d {rd_add inside {[0 : 4095};}
   constraint wr_distribution {wr dist{0:=70, 1:=30};}
   constraint rd_distribution {rd dist{0:=30, 1:=70};}
 
